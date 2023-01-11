@@ -51,6 +51,7 @@
         <?php
         include ("conexao.php");
         $nome = $_POST["aluno"];
+        
         $consulta = "SELECT e.descricao AS exercicios
                      FROM pessoa p
                      INNER JOIN aluno a on a.id_pessoa = p.id_pessoa and p.nome = '$nome'
