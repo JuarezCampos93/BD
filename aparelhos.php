@@ -45,39 +45,37 @@
     <div class="header-1">
         <ul align="left">
             <li><a href="index.php">HOME</a> </li>
-            <li><a href="aparelhos.php">APARELHOS</a> </li>
-            <li><a href="alunos.php">ALUNOS</a> </li>
-            <li><a href="agenda.php">AGENDA</a> </li>
+            <li><a href="listar.php">ALUNOS</a> </li>
         </ul>
-        <div>
-            <div position="relative" class="main" align="center">
-                <form action="#" method="post">
-                    <fieldset>
-                        <legend align="center">Preencha o Formulário de maquinário</legend>
-                        <label for="Funcionario" align="left">Nome Funcionario:</label>
-                        <input type="text" name="email" id="email" class="text" onfocus="textOn(this.id)"
-                            onblur="textNormal(this.id)" />
-                        <label for="Aparelho" align="left">Nome Aparelho:</label>
-                        <input type="text" name="aparelho" id="aparelho" class="text" onfocus="textOn(this.id)"
-                            onblur="textNormal(this.id)" />
-                        <label for="Sala" align="left">Nome Sala:</label>
-                        <input type="text" name="aparelho" id="aparelho" class="text" onfocus="textOn(this.id)"
-                            onblur="textNormal(this.id)" />
 
-                        <label for="manutenção" align="left">Primeira manutenção:</label>
+        <?php
+        include ("conexao.php");
+        $nome = $_POST["aluno"];
+        $consulta = "SELECT e.descricao AS exercicios
+                     FROM pessoa p
+                     INNER JOIN aluno a on a.id_pessoa = p.id_pessoa and p.nome = '$nome'
+                     INNER JOIN exercicio_da_ficha e on e.numero_ficha = a.numero_ficha
+                    ";
 
-                        <input type="radio" name="webmaster" value="sim" />Sim<br />
-                        <input type="radio" name="webmaster" value="nao" />Não<br />
+        $con = $mysqli->query($consulta) or die($mysqli->error);
 
-                        <br> </br>
-                        <input type="submit" align="left" name="enviar" id="enviar" class="button">
-                        <input align="center" type="reset" name="redefinir" id="redefinir" class="button">
-                        <button align="right"> Consultar</button>
+        ?><table border=1>
+            <tr><td>Exercicios:</td></tr>
+            <tr><?php while($dado = $con->fetch_array()){ ?>
+                <td><?php echo $dado["exercicios"]; ?></td>
+            </tr>
+            <?php } ?>
+        </table>
+        <?php
+
+        ?>  
 
 
-                    </fieldset>
-                </form>
-            </div>
+
+
+
+
+
 </body>
 
 </html>

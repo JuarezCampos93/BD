@@ -54,19 +54,13 @@ include("conexao.php");
     <div class="header-1">
         <ul>
             <li><a href="index.php">HOME</a> </li>
-            <li><a href="aparelhos.php">APARELHOS</a> </li>
-            <li><a href="alunos.php">ALUNOS</a> </li>
-            <li><a href="agenda.php">AGENDA</a> </li>
+            <li><a href="listar.php">ALUNOS</a> </li>
         </ul>
         <div>
             <div position="relative" class="main" align="center">
                 <div>
-                <a href="listar.php"><button>Listar Alunos</button> </a>
-                <a href="alunos.php"><button>Cadastrar Aluno</button> </a>
-                </div>
-
-                <a href="professores.php"><button>Listar Professores</button> </a>
-            </div>
+                <a href="listar.php"><button>Listar Alunos</button> </a>                
+                
 
 
 </body>
